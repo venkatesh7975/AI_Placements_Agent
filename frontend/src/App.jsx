@@ -11,6 +11,7 @@ import {
   ArrowRight, Search, RefreshCw, Star, GitFork, BookOpen, Layers,
   Mic, MicOff, Volume2
 } from 'lucide-react';
+import AdminDashboard from './components/AdminDashboard';
 
 const API_BASE = '/api';
 
@@ -691,6 +692,16 @@ export default function App() {
           </button>
 
           <span className="text-[10px] font-bold text-obsidian-500 tracking-widest uppercase mt-6 mb-3 pl-3">Interventions</span>
+
+          {user?.isAdmin && (
+            <button 
+              onClick={() => navigateTo('admin')}
+              className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl text-left text-sm font-semibold tracking-wide transition-all ${view === 'admin' ? 'bg-cyber-purple/15 text-white border border-cyber-purple/25 shadow-lg shadow-cyber-purple/5' : 'text-obsidian-500 hover:bg-white/5 hover:text-white border border-transparent'}`}
+            >
+              <ShieldAlert size={16} className={view === 'admin' ? 'text-cyber-purple' : ''} />
+              <span>Admin Portal</span>
+            </button>
+          )}
 
           <button 
             onClick={() => navigateTo('roadmap')}
@@ -1765,6 +1776,10 @@ export default function App() {
               </div>
 
             </div>
+          )}
+
+          {view === 'admin' && user?.isAdmin && (
+            <AdminDashboard />
           )}
 
         </main>

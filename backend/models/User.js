@@ -6,8 +6,9 @@ const UserSchema = new mongoose.Schema({
   password: { type: String, required: true },
   college: { type: String, default: '' },
   targetCompanies: [{ type: String }],
-  githubUsername: { type: String, default: '' },
-  leetcodeUsername: { type: String, default: '' },
+  githubUsername: { type: String },
+  leetcodeUsername: { type: String },
+  isAdmin: { type: Boolean, default: false },
   createdAt: { type: Date, default: Date.now }
 });
 

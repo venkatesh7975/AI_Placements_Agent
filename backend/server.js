@@ -20,9 +20,10 @@ app.use((req, res, next) => {
 });
 
 // Mount Routes
-app.use('/api/auth', authRoutes);
-app.use('/api/analyze', analyzeRoutes);
-app.use('/api/roadmap', roadmapRoutes);
+app.use('/api/auth', require('./routes/auth'));
+app.use('/api/analyze', require('./routes/analyze'));
+app.use('/api/roadmap', require('./routes/roadmap'));
+app.use('/api/admin', require('./routes/admin'));
 
 // Base route
 app.get('/', (req, res) => {
